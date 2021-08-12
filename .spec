@@ -38,7 +38,7 @@ install_neovim() {
   git clone https://github.com/neovim/neovim.git nvim
   cd nvim
   make CMAKE_BUILD_TYPE=Release
-  export VIMRUNTIME=runtime ./build/bin/nvim
+  export VIMRUNTIME=runtime ./src/nvim
 }
 
 update_config() {
