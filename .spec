@@ -14,10 +14,10 @@ copy_config() {
 
 get_plugs() {
   plugs=(
-    'ervandew/supertab' 
-    'tpope/vim-endwise'
-    'junegunn/vim-easy-align'
-    'kien/ctrlp.vim'
+    ervandew\/supertab 
+    tpope\vim\-endwise
+    junegunn\/vim\-easy\-align
+    kien\/ctrlp.vim
   )
   [[ -d ~/.config/nvim/plugs ]]&& \
   ( echo "plugs dir exists!" && exit ) \
