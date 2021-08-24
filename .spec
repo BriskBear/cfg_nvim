@@ -34,7 +34,7 @@ install_neovim() {
     ( chmod u+x nvim.appimage ) && \
     ( ./nvim.appimage --appimage-extract ) && \
     ( sudo cp -rf ./squashfs-root/usr/* /usr/) \
-  ) && ( echo 'neovim Installed!' ) || (
+  ) && ( echo 'neovim Installed!' && rm -rf squashfs-root nvim.appimage) || (
     git clone https://github.com/neovim/neovim.git nvim
     cd nvim
     make -j5 CMAKE_BUILD_TYPE=Release
