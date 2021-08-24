@@ -22,7 +22,7 @@ get_plugs() {
   [[ -d ~/.config/nvim/plugs ]]&& \
   ( echo "plugs dir exists!" && exit ) \
   || ( mkdir -vp ~/.config/nvim/plugs )
-  printf '%s\n' ${plugs[@]}|xargs P4 -I% git clone https://github.com/% ~/.config/nvim/plugs/%
+  printf '%s\n' ${plugs[@]}|xargs -P4 -I% git clone https://github.com/% ~/.config/nvim/plugs/%
 }
 
 install_neovim() {
