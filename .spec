@@ -22,7 +22,7 @@ get_plugs() {
   [[ -d ~/.config/nvim/plugs ]]&& \
   ( echo "plugs dir exists!" && exit ) \
   || ( mkdir -vp ~/.config/nvim/plugs )
-  echo ${plugs[@]}|xargs -n 1 -P 4 -I % git clone https://github.com/% ~/.config/nvim/plugs/%
+  echo ${plugs[@]}|xargs -n 1 -P 4 -I % git clone https://github.com/% ~/.config/nvim/plugs/
   # for p in ${plugs[@]}
   # do
   #   git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
