@@ -9,7 +9,7 @@ warn=" ${CYAN}Cowardly,${NC}${LIGHT_GREEN} preserving ${NC}nvim config.\n${RED}D
 copy_config() {
   [[ -d ~/.config/nvim ]] \
     && ( echo 'neovim config exists!' && exit ) \
-    || ( cp -rvf $1 $2 )
+    || ( cp -rvf $1/* $2 )
 }
 
 get_plugs() {
