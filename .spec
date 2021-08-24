@@ -15,18 +15,14 @@ copy_config() {
 get_plugs() {
   plugs=(
     ervandew\/supertab 
-    tpope\vim\-endwise
+    tpope\/vim\-endwise
     junegunn\/vim\-easy\-align
     kien\/ctrlp.vim
   )
   [[ -d ~/.config/nvim/plugs ]]&& \
   ( echo "plugs dir exists!" && exit ) \
   || ( mkdir -vp ~/.config/nvim/plugs )
-  echo ${plugs[@]}|xargs -n1 -P4 -I% git clone https://github.com/% ~/.config/nvim/plugs/
-  # for p in ${plugs[@]}
-  # do
-  #   git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
-  # done
+  printf '%s\n' ${plugs[@]}|xargs P4 -I% git clone https://github.com/% ~/.config/nvim/plugs/%
 }
 
 install_neovim() {
