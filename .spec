@@ -7,7 +7,7 @@ url='https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage'
 warn=" ${CYAN}Cowardly,${NC}${LIGHT_GREEN} preserving ${NC}nvim config.\n${RED}DANGER ${NC}${PINK}replace current nvim config with the newest from ~/.io?${NC} (${RED}y${NC}/${LIGHT_GREEN}n${NC})\n"
 
 copy_config() {
-  [[ -d ~/.config/nvim ]] \
+  [[ -d ~/.config/nvim/init.vim ]] \
     && ( echo 'neovim config exists!' && exit ) \
     || ( cp -rvf $1/* $2 )
 }
