@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ~/.io/config/envar
+SCRIPT=$(realpath $0)
 SOURCE=$(dirname $SCRIPT)
 DEST="$HOME/.config/nvim"
 url='https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage'
