@@ -29,16 +29,17 @@ get_plugs() {
 }
 
 install_neovim() {
-#  [[ -d ~/Downloads ]] && ( cd ~/Downloads )
-#  ( wget $url && \
-#    ( chmod u+x nvim.appimage ) && \
-#    ( ./nvim.appimage --appimage-extract ) && \
-#    ( sudo rsync -aAXP ./squashfs-root/usr/ /usr/) \
-#  ) && ( echo 'neovim Installed!' )
-  git clone https://github.com/neovim/neovim.git nvim
-  cd nvim
-  make CMAKE_BUILD_TYPE=Release
-  sudo make CMAKE_INSTALL_PREFIX=/usr install
+  [[ -d ~/Downloads ]] && ( cd ~/Downloads )
+  ( curl $url -#Lo ./nvim.appimage && \
+    ( chmod u+x nvim.appimage ) && \
+    ( ./nvim.appimage --appimage-extract ) && \
+    ( sudo cp -rf ./squashfs-root/usr/* /usr/) \
+  ) && ( echo 'neovim Installed!' ) || (
+    git clone https://github.com/neovim/neovim.git nvim
+    cd nvim
+    make -j5 CMAKE_BUILD_TYPE=Release
+    sudo make -j5 CMAKE_INSTALL_PREFIX=/usr install
+  )
 }
 
 update_config() {
