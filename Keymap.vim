@@ -59,10 +59,13 @@
 
 " ================================= Tabs / unTabs =====================
 
-        nnoremap <A-Tab> vip<c-v>lx
-        vnoremap <A-Tab> <c-v>lxv
-        nnoremap <Tab> mpvip<c-v>I  <esc>`p2l
-        vnoremap <Tab> <c-v>0I<Tab><esc>
+  nnoremap <Leader><Tab> mp^<c-v>'ii  <esc>`p
+  nnoremap <Leader><A-Tab> mp<home><c-v>'ihx`p 
+  nnoremap <A-Tab> vip<c-v>lx
+  vnoremap <A-Tab> <c-v>lxv
+  nnoremap <Tab> mpvip<c-v>I  <esc>`p
+  vnoremap <Tab> <c-v>I<Tab><esc>
+
 
 " ================================ Utility ============================
 
@@ -78,6 +81,7 @@
   nnoremap <Leader>% :! ./%<CR>
   nnoremap <Leader>t :tabnew 
   nnoremap <A-t> :tabfind 
+  nnoremap <Leader>col :tabfind ~/.config/nvim/Color.vim<CR>
   nnoremap <Leader>key :tabfind ~/.config/nvim/Keymap.vim<CR>
   nnoremap <Leader>init :tabfind ~/.config/nvim/init.vim<CR>
   nnoremap <Leader>s :w 

@@ -1,9 +1,7 @@
-  set nocompatible
-
 " =================== General Configuration ===========================
 
   set autoread               " reload changes from outside of vim
-  set colorcolumn=80,100     " Line Ending Indicator
+  set colorcolumn=90         " Line Ending Indicator
   set number relativenumber  " #s 'relative' to cursor
   set history=10000          " much cmdline history
   set ignorecase             " ignore case
@@ -13,8 +11,8 @@
   set showmode               " default, display mode at bottom line
   set smartcase              " Unless includes capital
   set cursorline             " Locate the cursor vertically
-  set path+=~/.io/.blanks/** " Edit Blanks Easily
-  set path+=~/.config/**     " Edit Configurations Easily
+  set path+=~/.io/.blanks    " Edit Blanks Easily
+  set path+=~/.config/*      " Edit Configurations Easily
   set path+=**               " search recursive for files
 
   set omnifunc=htmlcomplete#CompleteTags
@@ -35,8 +33,7 @@
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
   augroup END
-  autocmd BufNewFile .\* 0r ~/.config/nvim/mdl/skeleton.yml 
-  
+
 " =================== Swap Files Off ==================================
 
   set noswapfile
