@@ -9,7 +9,7 @@ warn=" ${CYAN}Cowardly,${NC}${LIGHT_GREEN} preserving ${NC}nvim config.\n${RED}D
 copy_config() {
   [[ -d ~/.config/nvim ]]&& \
     ( echo 'neovim config exists!' && exit ) \
-    || ( cp -rvf $SOURCE $DEST )
+    || ( mkdir ~/.config ; cp -rvf $SOURCE $DEST )
 }
 
 get_plugs() {
@@ -19,9 +19,11 @@ get_plugs() {
     'junegunn/vim-easy-align'
     'kien/ctrlp.vim'
   )
-  [[ -d ~/.vim/ ]]&& \
-  ( echo "~/.vim/ exists!" && exit ) \
-  || ( mkdir -vp ~/.config/nvim/plugs )
+
+  [[ -d ~/.config/nvim/ ]]&& \
+    ( echo "~/.config/nvim/ exists!" && exit ) \
+    || ( mkdir -vp ~/.config/nvim/plugs )
+
   for p in ${plugs[@]}
   do
     git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
@@ -29,11 +31,11 @@ get_plugs() {
 }
 
 install_neovim() {
-  [[ -d ~/Downloads ]]&& ( cd ~/Downloads )
+  [[ -d ~/Downloads ]]&& ( pushd /tmp/ )
   ( curl -L $url -o nvim.appimage && \
     ( chmod u+x nvim.appimage ) && \
     ( ./nvim.appimage --appimage-extract ) && \
-    ( cp -rf ./squashfs-root/usr/* /usr/) 
+    ( sudo cp -rf ./squashfs-root/usr/ /) 
   ) && ( echo 'neovim Installed!' )
 }
 
