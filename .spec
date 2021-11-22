@@ -31,11 +31,12 @@ get_plugs() {
 }
 
 install_neovim() {
-  [[ -d ~/Downloads ]]&& ( pushd /tmp/ )
+  pushd /tmp/
   ( curl -L $url -o nvim.appimage && \
     ( chmod u+x nvim.appimage ) && \
     ( ./nvim.appimage --appimage-extract ) && \
-    ( sudo cp -rf ./squashfs-root/usr/ /) 
+    ( sudo cp -rf ./squashfs-root/usr/ /) && \
+    (sudo rm -rf ./squashfs-root nvim.appimage)
   ) && ( echo 'neovim Installed!' )
 }
 
