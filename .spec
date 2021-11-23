@@ -36,9 +36,9 @@ install_neovim() {
     ( chmod u+x nvim.appimage ) && \
     ( ./nvim.appimage --appimage-extract ) && \
     ( sudo cp -rf ./squashfs-root/usr/ /) && \
-    (sudo rm -rf ./squashfs-root nvim.appimage) && \
-    popd
+    (sudo rm -rf ./squashfs-root nvim.appimage)
   ) && ( echo 'neovim Installed!' )
+  popd
 }
 
 update_config() {
