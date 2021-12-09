@@ -3,4 +3,3 @@
 rsync -aAXP \
   ~/.config/nvim/ \
   ~/.io/config/nvim/
-
