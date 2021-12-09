@@ -14,6 +14,8 @@
   set path+=~/.io/.blanks    " Edit Blanks Easily
   set path+=~/.config/*      " Edit Configurations Easily
   set path+=**               " search recursive for files
+  let $VIMBROWSER='/usr/sbin/brave'
+  let $OPENBROWSER='nnoremap <F5> :!'. $VIMBROWSER .' %:p<CR>'
 
   set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType ruby setl omnifunc=syntaxcomplete#Complete
@@ -32,6 +34,13 @@
     autocmd!
     autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
     autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+  augroup END
+
+  " Pretty Markdown
+  augroup OpenMdFile
+    autocmd!
+    autocmd BufEnter *.md echo "Press F5 to Open .md File"
+    autocmd BufEnter *.md exe $OPENBROWSER
   augroup END
 
 " =================== Swap Files Off ==================================
