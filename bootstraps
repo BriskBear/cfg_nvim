@@ -4,7 +4,6 @@ SCRIPT=`realpath $0`
 SOURCE="`realpath $(pwd)`/*"
 DEST="$HOME/.config/nvim"
 url='https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage'
-warn=" ${CYAN}Cowardly,${NC}${LIGHT_GREEN} preserving ${NC}nvim config.\n${RED}DANGER ${NC}${PINK}replace current nvim config with the newest from ~/.io?${NC} (${RED}y${NC}/${LIGHT_GREEN}n${NC})\n"
 
 copy_config() {
   [[ -d ~/.config/nvim ]]&& \
@@ -41,17 +40,6 @@ install_neovim() {
   popd
 }
 
-update_config() {
-    printf "$warn"
-    echo $update
-    read update
-}
-
-echo $SOURCE
-echo $DEST
-
-# update_config
-
 copy_config
 get_plugs
-echo 'call install_neovim to build nightly'
+printf "call \033[0;36minstall_neovim\033[0m to build nightly\n"

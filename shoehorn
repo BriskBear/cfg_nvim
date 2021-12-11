@@ -1,0 +1,10 @@
+#!/bin/bash
+
+printf "\033[0;33mshoehorn\033[0m will uninstall neovim, when installed with bootstraps.
+Confirm: (\033[1;32my\033[0mes/\033[1;31mn\033[0mo)\n"
+read CONF
+LOCS=($( whereis nvim ))
+[[ $CONF =~ 'y' ]]&& (
+  printf '%s\n' "${LOCS[@]:1}"|
+   xargs -I % sudo rm -vrf %
+)
