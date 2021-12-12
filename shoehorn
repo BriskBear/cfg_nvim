@@ -8,3 +8,5 @@ LOCS=($( whereis nvim ))
   printf '%s\n' "${LOCS[@]:1}"|
    xargs -I % sudo rm -vrf %
 )
+
+rm -rf ~/.config/nvim

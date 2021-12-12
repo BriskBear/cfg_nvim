@@ -12,12 +12,7 @@ copy_config() {
 }
 
 get_plugs() {
-  plugs=(
-    'ervandew/supertab' 
-    'tpope/vim-endwise'
-    'junegunn/vim-easy-align'
-    'kien/ctrlp.vim'
-  )
+  plugs=($( cat plugins ))
 
   [[ -d ~/.config/nvim/ ]]&& \
     ( echo "~/.config/nvim/ exists!" && exit ) \
