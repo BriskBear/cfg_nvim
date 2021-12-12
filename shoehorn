@@ -9,4 +9,4 @@ LOCS=($( whereis nvim ))
    xargs -I % sudo rm -vrf %
 )
 
-rm -rf ~/.config/nvim
+rm -rf $HOME/.config/nvim

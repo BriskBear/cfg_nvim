@@ -112,3 +112,9 @@
   set statusline+=\ \ \ \ \ \ 
   set statusline+=%{&fileencoding?&fileenconding:&encoding}
   set statusline+=\:%{&fileformat}
+
+" ================================= Language Servers ==================
+
+  lua << EOF
+    require'lspconfig'.tsserver.setup{}
+  EOF

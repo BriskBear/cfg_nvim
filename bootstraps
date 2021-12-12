@@ -1,13 +1,13 @@
 #!/bin/bash
 
 SCRIPT=`realpath $0`
-SOURCE="`realpath $(pwd)`/*"
+SOURCE="`realpath $(pwd)`/*.vim"
 DEST="$HOME/.config/nvim"
 url='https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage'
 
 copy_config() {
-  [[ -d ~/.config/nvim ]]&& \
-    ( echo 'neovim config exists!' && exit ) \
+  [[ -d ~/.config/nvim ]] \
+    && ( echo 'neovim config exists!' && exit ) \
     || ( mkdir -pv ~/.config/nvim ; cp -rvf $SOURCE $DEST )
 }
 
@@ -18,10 +18,11 @@ get_plugs() {
     ( echo "~/.config/nvim/ exists!" && exit ) \
     || ( mkdir -vp ~/.config/nvim/plugs )
 
-  for p in ${plugs[@]}
-  do
-    git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
-  done
+  printf '%s\n' ${plugs[@]}|xargs -I % git clone https://github.com/% $HOME/.config/nvim/plugs/%
+#   for p in ${plugs[@]}
+#   do
+#     git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
+#   done
 }
 
 install_neovim() {

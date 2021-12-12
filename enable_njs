@@ -1,0 +1,12 @@
+#!/bin/bash
+
+plugin=`asdf list|grep nodejs`
+
+[[ `asdf --version` ]]|| ( printf "${Red}asdf${NC} is not installed\n" && return 1 )
+[[ $plugin ]]&& printf "asdf:${Yel}nodejs${NC} plugin exists.\n" || asdf plugin-add nodejs
+
+asdf install nodejs latest
+versions=($( asdf list nodejs ))
+asdf global nodejs $versions
+
+npm i -g neovim typescript typescript-language-server
