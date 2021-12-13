@@ -11,8 +11,8 @@
 
 set $mod Mod4
 
-gaps inner all set 9
-gaps outer all minus 15
+gaps inner 9
+gaps outer -6
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -27,7 +27,8 @@ font pango:zig 6
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec_always $HOME/.config/i3/scrn/stable.sh && sleep 3 && $HOME/.config/i3/scrn/default.sh
+exec --no-startup-id xss-lock --transfer-sleep-lock -- $(i3lock-fancy -p -f /usr/share/fonts/VictorMonoLLight.ttf) --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -48,6 +49,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 
 # start a browser
 bindsym $mod+b exec Brave
+
+# start MS Teams(gross)
+bindsym $mod+t exec teams
+
+# start remmina
+bindsym $mod+c exec (ssh -X -C eofce remmina &> /tmp/rem) 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -90,8 +97,13 @@ bindsym $mod+z split h
 # split in vertical orientation
 bindsym $mod+v split v
 
+# screenshot
+bindsym Print exec flameshot gui
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+
+bindsym $mod+Shift+greater move workspace to output right
+bindsym $mod+Shift+less move workspace to output left
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -114,23 +126,37 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 
 set $ws1 "1: "
+assign [ class="Conky" ] $ws1
 set $ws2 "2: "
 set $ws3 "3: "
 assign [ class="Brave-browser" ] $ws3
 set $ws4 "4: "
-assign [ class="Atom" ] $ws4
+assign [ class="jetbrains-rubymine" ] $ws4
 set $ws5 "5: "
-assign [ class="Steam" ] $ws5
-set $ws6 "$wkr6"
+set $ws6 "6: "
+assign [ class="Virt-manager" ] $ws6
+assign [ class="org.remmina.Remmina" ] $ws6
 set $ws7 "7: "
 assign [ class="Thunar" ] $ws7
 set $ws8 "8: "
 assign [ class="Lxappearance" ] $ws8
+assign [ class="Pavucontrol" ] $ws8
 set $ws9 "9: "
 assign [ class="TelegramDesktop" ] $ws9
 assign [ class="discord" ] $ws9
+assign [ class="Microsoft Teams - Preview" ] $ws9
+assign [ class="Electron" ] $ws9
 set $ws10 "10: "
 assign [ class="VLC media player" ] $ws10
+
+# Other window-class options
+
+for_window [ class="Thunar" ]                          floating enable
+for_window [ class="jetbrains-rubymine" title="win0" ] floating enable
+for_window [ class="Pavucontrol" ]                     floating enable
+for_window [ class="Lxappearance" ]                    floating enable
+for_window [ class="Arandr" instance="arandr" ]        floating enable
+for_window [ class="st" title="flt" ]                  floating enable
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -162,6 +188,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Do you really want to shutdown?' -B 'Yes, shutdown' 'systemctl poweroff'"
 
 # border width
 for_window[ class="^.*" ] border pixel 0
@@ -219,7 +246,12 @@ bar {
         position top
 }
 
-bindsym $mod+shift+x exec i3lock -c 1d1f21
-exec_always $HOME/.config/i3/gifbg ~/.config/i3/op.gif
-exec_always $HOME/.config/i3/scrn/default.sh
+bindsym $mod+shift+x exec i3lock-fancy -p -f /usr/share/fonts/VictorMonoLLight.ttf
+# exec_always $HOME/.config/i3/gifbg ~/.config/i3/op.gif
+exec_always xrdb $HOME/.config/Xdefaults
+exec_always flameshot
+exec_always conky -c $HOME/.config/conky/auzia-conky-0.1/conkyrc
+exec_always xmodmap $HOME/.config/Xmodmap
+exec_always dunst
+exec_always nitrogen --restore
 exec compton -f
