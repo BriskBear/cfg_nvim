@@ -18,11 +18,9 @@ get_plugs() {
     ( echo "~/.config/nvim/ exists!" && exit ) \
     || ( mkdir -vp ~/.config/nvim/plugs )
 
+  rm ~/.config/nvim/Plugins.vim
   printf '%s\n' ${plugs[@]}|xargs -I % git clone https://github.com/% $HOME/.config/nvim/plugs/%
-#   for p in ${plugs[@]}
-#   do
-#     git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
-#   done
+  printf '%s\n' ${plugs[@]}|xargs -I % echo set runtimepath+=~/.config/nvim/plugs/% >> ~/.config/nvim/Plugins.vim
 }
 
 install_neovim() {
