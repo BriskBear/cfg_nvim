@@ -1,19 +1,19 @@
 " =================== General Configuration ===========================
 
-  set autoread               " reload changes from outside of vim
-  set colorcolumn=90         " Line Ending Indicator
-  set number relativenumber  " #s 'relative' to cursor
-  set history=10000          " much cmdline history
-  set ignorecase             " ignore case
-  set lcs+=trail:❚,space:❚   " Use column to indicate spaces when enabled
-  set mouse=a                " Mouse Enabled
-  set showcmd                " show commands, even if incomplete?
-  set showmode               " default, display mode at bottom line
-  set smartcase              " Unless includes capital
-  set cursorline             " Locate the cursor vertically
-  set path+=~/.io/.blanks    " Edit Blanks Easily
-  set path+=~/.config/*      " Edit Configurations Easily
-  set path+=**               " search recursive for files
+  set autoread                 " reload changes from outside of vim
+  set colorcolumn=93,100       " Line Ending Indicator
+  set number relativenumber    " #s 'relative' to cursor
+  set history=10000            " much cmdline history
+  set ignorecase               " ignore case
+  set lcs+=trail:❚,space:❚     " Use column to indicate spaces when enabled
+  set mouse=a                  " Mouse Enabled
+  set showcmd                  " show commands, even if incomplete?
+  set showmode                 " default, display mode at bottom line
+  set smartcase                " Unless includes capital
+  set cursorline               " Locate the cursor vertically
+  set path+=~/.io/.blanks/**   " Edit Blanks Easily
+  set path+=~/.config/**       " Edit Configurations Easily
+  set path+=**                 " search recursive for files
 
   set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType ruby setl omnifunc=syntaxcomplete#Complete
@@ -30,15 +30,17 @@
   " Auto-Numbers
   augroup numbertoggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave *if @% == '-MINIMAP-'|echo 'NONUM'|else|set relativenumber|echo 'RELNUM'|endif
+    autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
   augroup END
+  autocmd BufEnter,BufWrite * Minimap
 
 " =================== Swap Files Off ==================================
 
   set noswapfile
   set nobackup
   set nowb
+  set undodir=~/.config/nvim/.backup
 
 " =================== Persistent Undo ==================================
 

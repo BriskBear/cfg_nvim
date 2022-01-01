@@ -1,30 +1,7 @@
 
 " ================================= Braces & Brackets =================
 
-  inoremap {<cr> {<cr>}<c-o><s-o>  
-  inoremap [<cr> [<cr>]<c-o><s-o>  
-  inoremap (<cr> (<cr>)<c-o><s-o>  
-  inoremap ((<space> (  )<c-o>h
-  inoremap [[<space> [  ]<c-o>h
-  inoremap {{<space> {  }<c-o>h
-  inoremap <<<space> <  ><c-o>h
-  inoremap "" ""<c-o>i
-  inoremap '' ''<c-o>i
-  inoremap `` ``<c-o>i
-  inoremap ('( ('')<c-o>i
-  inoremap (( ()<c-o>i
-  inoremap [[ []<c-o>i
-  inoremap {{ {}<c-o>i
-  inoremap << <><c-o>i
-  inoremap <%= <%=<space><space>%><c-o>2h
-  inoremap <%<space> <%<space><space>%><c-o>2h
-  inoremap \"\" \"\"<c-o>h
-  inoremap (s (<c-o>A)
-  inoremap {s {<c-o>A}
-  inoremap [s [<c-o>A]
-  inoremap "s "<c-o>A"
-  inoremap 's '<c-o>A'
-  inoremap `s `<c-o>A`
+  source $HOME/.config/nvim/Brackets.vim
 
 " ================================= Comments ==========================
 
@@ -69,15 +46,15 @@
 
 " ================================ Utility ============================
 
-  nnoremap ~ :r! 
+  nnoremap ~ :r!
   inoremap kj <esc>
   inoremap KJ <esc>
   vnoremap KJ <esc>
+  vnoremap kj <esc>
   nnoremap <c-s> :w<CR>
   nnoremap <c-x> :q<CR>
   nnoremap <Leader>r :source $MYVIMRC<CR>
-  nnoremap <Leader>R :set nu relativenumber!<CR>
-  nnoremap <Leader> :q!<CR>
+  nnoremap <Leader>q :q!<CR>
   nnoremap <Leader>% :! ./%<CR>
   nnoremap <Leader>t :tabnew 
   nnoremap <A-t> :tabfind 

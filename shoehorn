@@ -1,12 +1,33 @@
 #!/bin/bash
 
-printf "\033[0;33mshoehorn\033[0m will uninstall neovim, when installed with bootstraps.
-Confirm: (\033[1;32my\033[0mes/\033[1;31mn\033[0mo)\n"
-read CONF
+# Throw 1 if root
+[[ $UID = 0 ]]&& return 1
+
+# 
 LOCS=($( whereis nvim ))
+ MSG='\033[0;33mshoehorn\033[0m will uninstall neovim, when installed with bootstraps.\n Confirm: (\033[1;32my\033[0mes/\033[1;31mn\033[0mo)\n'
+ PRG='  Purge? (\033[1;32my\033[0mes/\033[1;31mn\033[0mo) (remove config files also)\n'
+  
+printf $MSG
+read CONF
+
 [[ $CONF =~ 'y' ]]&& (
   printf '%s\n' "${LOCS[@]:1}"|
-   xargs -I % sudo rm -vrf %
-)
+   xargs --replace=% \
+     sudo rm -vrf %
+       ) || ( echo -e "\033[1;31mN\033[0mot doing that." )
+unset CONF
+
+printf $PRG
+read CONF
+[[ $CONF =~ 'y' ]]&& ( 
+  rm -rvf $HOME/.config/nvim
+) || ( echo -e "\033[1;31mN\033[0mot doing that." )
+
 
 rm -rf $HOME/.config/nvim
+
+### Author's Notes: # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# ln:13 printf '%s\n' "${ARRAY[@]}: Prints each element on a line
+# ln:13 '|' at the end of a line continues looking on the next line to pipe!
+# ln:14 xargs starts a separate job of the command

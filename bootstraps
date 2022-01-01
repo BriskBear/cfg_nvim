@@ -26,16 +26,14 @@ get_plugs() {
 }
 
 plug_depends() {
-  pushd code-minimap
-  source deps_build
-  popd
+  sudo cp $SOURCE/.code-minimap /usr/bin/
 }
 
 install_neovim() {
   pushd /tmp/
-  ( curl -L $url -o nvim.appimage && \
-    ( chmod u+x nvim.appimage ) && \
-    ( ./nvim.appimage --appimage-extract ) && \
+  ( curl -L $url -o /tmp/nvim.appimage && \
+    ( chmod u+x /tmp/nvim.appimage ) && \
+    ( /tmp/nvim.appimage --appimage-extract ) && \
     ( sudo cp -rf ./squashfs-root/usr/ /) && \
     (sudo rm -rf ./squashfs-root nvim.appimage)
   ) && ( echo 'neovim Installed!' )
