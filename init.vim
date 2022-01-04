@@ -22,7 +22,7 @@
 
   " Update Leader Key to Space
   let mapleader=" "
-  set timeout timeoutlen=1500
+  set timeout timeoutlen=500
 
   " Syntax Highlighting
   syntax on
@@ -40,15 +40,12 @@
   set noswapfile
   set nobackup
   set nowb
-  set undodir=~/.config/nvim/.backup
 
 " =================== Persistent Undo ==================================
 
-  if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-    silent !mkdir ~/.vim/backups > /dev/null 2>$1
-    set undodir=~/.vim/backups
-    set undofile
-  endif
+  silent !mkdir ~/.config/nvim/.backups > /dev/null 2>$1
+  set undodir=~/.config/nvim/.backups
+  set undofile
 
 " =================== Folds ============================================
 
