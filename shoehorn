@@ -5,10 +5,10 @@
 
 # 
 LOCS=($( whereis nvim ))
- MSG='\033[0;33mshoehorn\033[0m will uninstall neovim, when installed with bootstraps.\n Confirm: (\033[1;32my\033[0mes/\033[1;31mn\033[0mo)\n'
- PRG='  Purge? (\033[1;32my\033[0mes/\033[1;31mn\033[0mo) (remove config files also)\n'
+ MSG='\033[0;33mshoehorn\033[0m will uninstall neovim, when installed with bootstraps.\n Confirm: (\033[1;32my\033[0mes/\033[1;31mn\033[0mo)'
+ PRG='  Purge? (\033[1;32my\033[0mes/\033[1;31mn\033[0mo) (remove config files also)'
   
-printf $MSG
+echo -e $MSG
 read CONF
 
 [[ $CONF =~ 'y' ]]&& (
@@ -17,15 +17,14 @@ read CONF
      sudo rm -vrf %
        ) || ( echo -e "\033[1;31mN\033[0mot doing that." )
 unset CONF
+echo $CONF
 
-printf $PRG
+echo -e $PRG
 read CONF
+
 [[ $CONF =~ 'y' ]]&& ( 
   rm -rvf $HOME/.config/nvim
 ) || ( echo -e "\033[1;31mN\033[0mot doing that." )
-
-
-rm -rf $HOME/.config/nvim
 
 ### Author's Notes: # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # ln:13 printf '%s\n' "${ARRAY[@]}: Prints each element on a line
