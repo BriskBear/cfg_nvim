@@ -17,7 +17,6 @@ read CONF
      sudo rm -vrf %
        ) || ( echo -e "\033[1;31mN\033[0mot doing that." )
 unset CONF
-echo $CONF
 
 echo -e $PRG
 read CONF
