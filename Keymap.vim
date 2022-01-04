@@ -43,7 +43,6 @@
   nnoremap <Tab> mpvip<c-v>I  <esc>`p
   vnoremap <Tab> <c-v>I<Tab><esc>
 
-
 " ================================ Utility ============================
 
   nnoremap ~ :r!
@@ -58,9 +57,10 @@
   nnoremap <Leader>% :! ./%<CR>
   nnoremap <Leader>t :tabnew 
   nnoremap <A-t> :tabfind 
-  nnoremap <Leader>col :tabfind ~/.config/nvim/Color.vim<CR>
-  nnoremap <Leader>key :tabfind ~/.config/nvim/Keymap.vim<CR>
-  nnoremap <Leader>init :tabfind ~/.config/nvim/init.vim<CR>
+  nnoremap <A-f> :sfind 
+  nnoremap <Leader>col :sfind ~/.config/nvim/Color.vim<CR>
+  nnoremap <Leader>key :sfind ~/.config/nvim/Keymap.vim<CR>
+  nnoremap <Leader>init :sfind ~/.config/nvim/init.vim<CR>
   nnoremap <Leader>s :w 
   nnoremap <Leader>S :w 
 
