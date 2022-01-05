@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='D:\Desktop\DFS'
+let g:netrw_dirhist_5='V:/workdir/pt_waterbaloo'
+let g:netrw_dirhist_4='V:\workdir\pt_waterbaloo'
+let g:netrw_dirhist_3='V:/'
+let g:netrw_dirhist_2='F:/DHCP'
+let g:netrw_dirhist_1='F:\dfs'
