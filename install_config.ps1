@@ -6,6 +6,9 @@
 #   Break
 #  }
 
+$URL = 'https://ftp.nluug.nl/pub/vim/pc/gvim82.exe'
+curl -o vim.exe -L $URL
+
 $children = Get-ChildItem
 $install_dir = "$env:ProgramFiles" -replace 'Program Files$','Program Files (x86)'
 $install_path = "$install_dir" + '\vim\'
@@ -18,6 +21,7 @@ $children|foreach {
   switch -regex ($($_.name))
   {
     '^.+\.ttf$' {Start-Process ./$_}
+    '^.+\.exe$' {Start-Process ./$_}
     'vim82' {Copy-Item -Recurse -Force $_ $install_path }
     '^.+\.ps1$' {'Leave *.ps1 files alone'}
     default {"File-type not recognized: $_"}
