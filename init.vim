@@ -22,7 +22,7 @@
 
   " Update Leader Key to Space
   let mapleader=" "
-  set timeout timeoutlen=1500
+  set timeout timeoutlen=500
 
   " Syntax Highlighting
   syntax on
@@ -34,21 +34,19 @@
     autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
   augroup END
   autocmd BufEnter,BufWrite * Minimap
+  autocmd BufWritePre * lua vim.lsp.buf.formatting()
 
 " =================== Swap Files Off ==================================
 
   set noswapfile
   set nobackup
   set nowb
-  set undodir=~/.config/nvim/.backup
 
 " =================== Persistent Undo ==================================
 
-  if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-    silent !mkdir ~/.vim/backups > /dev/null 2>$1
-    set undodir=~/.vim/backups
-    set undofile
-  endif
+  silent !mkdir -p $HOME/.config/nvim/.backups > /dev/null 2>$1
+  set undodir=$HOME/.config/nvim/.backups//
+  set undofile
 
 " =================== Folds ============================================
 
