@@ -44,8 +44,8 @@
 
 " =================== Persistent Undo ==================================
 
-  silent !mkdir -p $HOME/.config/nvim/.backups > /dev/null 2>$1
-  set undodir=$HOME/.config/nvim/.backups//
+  silent !mkdir ~/.config/nvim/.backups
+  set undodir=~/.config/nvim/.backups
   set undofile
 
 " =================== Folds ============================================

@@ -26,7 +26,7 @@ get_plugs() {
 }
 
 plug_depends() {
-  sudo cp $SOURCE/.code-minimap /usr/bin/
+  sudo cp $SOURCE/.code-minimap /usr/bin/code-minimap
 }
 
 install_neovim() {

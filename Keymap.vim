@@ -47,7 +47,6 @@
   nnoremap <Tab> mpvip<c-v>I  <esc>`p
   vnoremap <Tab> <c-v>I<Tab><esc>
 
-
 " ================================ Utility ============================
 
   nnoremap ~ :r!
