@@ -25,6 +25,21 @@
   nmap ga <Plug>(EasyAlign)
   vmap <M-A> gaip*<c-X>
 
+" ================================= Functions =========================
+
+  function SplitMap()
+    :r!lsdev
+    :normal vip
+    :sort
+    :g/\/$/put!=''
+    /Rakefile
+    n
+    :normal VG
+    :normal xgg2jp
+    :normal vip
+    :exec sort
+  endfunction
+
 " ================================= Insert Movement ===================
 
   inoremap <c-h> <c-o>h
@@ -50,19 +65,25 @@
 " ================================ Utility ============================
 
   nnoremap ~ :r!
-  inoremap kj <esc>
-  inoremap KJ <esc>
-  vnoremap KJ <esc>
-  vnoremap kj <esc>
+  nnoremap X :bd1<cr>
+  inoremap kj <esc>l
+  inoremap KJ <esc>l
+  vnoremap KJ <esc>l
+  vnoremap kj <esc>l
+  nnoremap X :bd!1<CR>
+  nnoremap D ggI--- #<esc>:r!date -u +\%s<CR>kJx
+  nnoremap <c-n> :set number!<CR>
   nnoremap <c-s> :w<CR>
   nnoremap <c-x> :q<CR>
   nnoremap <Leader>r :source $MYVIMRC<CR>
   nnoremap <Leader>q :q!<CR>
   nnoremap <Leader>% :! ./%<CR>
   nnoremap <Leader>t :tabnew 
+  nnoremap <Leader>N :new<CR>
   nnoremap <A-t> :tabfind 
   nnoremap <A-f> :sfind 
   nnoremap <A-r> :resize 
+  nnoremap <A-R> :resize line('.')
   nnoremap <Leader>col :sfind ~/.config/nvim/Color.vim<CR>
   nnoremap <Leader>key :sfind ~/.config/nvim/Keymap.vim<CR>
   nnoremap <Leader>init :sfind ~/.config/nvim/init.vim<CR>
