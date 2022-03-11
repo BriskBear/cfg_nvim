@@ -2,7 +2,6 @@
 
   set autoread                 " reload changes from outside of vim
   set colorcolumn=93,100       " Line Ending Indicator
-  set number relativenumber    " #s 'relative' to cursor
   set history=10000            " much cmdline history
   set ignorecase               " ignore case
   set lcs+=trail:❚,space:❚     " Use column to indicate spaces when enabled
@@ -30,21 +29,21 @@
   " Auto-Numbers
   augroup numbertoggle
     autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave *if @% == '-MINIMAP-'|echo 'NONUM'|else|set relativenumber|echo 'RELNUM'|endif
-    autocmd BufLeave,FocusLost,InsertEnter *  set norelativenumber
+    autocmd BufEnter,FocusGained,InsertLeave * if @% == '-MINIMAP-'|echo 'NONUM'|else|set norelativenumber|set number|vertical resize 97|endif
+    autocmd BufLeave,FocusLost,InsertEnter * set relativenumber
   augroup END
   autocmd BufEnter,BufWrite * Minimap
-  autocmd BufWritePre * lua vim.lsp.buf.formatting()
 
 " =================== Swap Files Off ==================================
 
   set noswapfile
   set nobackup
   set nowb
+  set undodir=~/.config/nvim/.backup
 
 " =================== Persistent Undo ==================================
 
-  silent !mkdir ~/.config/nvim/.backups
+  silent !mkdir ~/.config/nvim/.backups > /dev/null 2>$1
   set undodir=~/.config/nvim/.backups
   set undofile
 
