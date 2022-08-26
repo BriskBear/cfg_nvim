@@ -13,6 +13,7 @@
   inoremap ('( ('')<c-o>F'
   inoremap ("( ("")<c-o>F"
   inoremap (( ()<esc>F(a
+  inoremap [[<space> [[  ]]<c-o>F 
   inoremap [[ []<esc>F[a
   inoremap {{ {}<esc>F{a
   inoremap << <><esc>F<a
@@ -25,6 +26,13 @@
   inoremap "s "<c-o>A"
   inoremap 's '<c-o>A'
   inoremap `s `<c-o>A`
+  nnoremap <Leader>" mh/"<CR>x?"<CR>x`hh
+  nnoremap <Leader>' mh/'<CR>x?'<CR>x`hh
+  nnoremap <Leader>` mh/`<CR>x?`<CR>x`hh
+  nnoremap <Leader>( mh/)<CR>x?(<CR>x`hh
+  nnoremap <Leader>{ mh/}<CR>x?{<CR>x`hh
+  nnoremap <Leader>[ mh/]<CR>x?[<CR>x`hh
+  nnoremap <Leader>< mh/><CR>x?<<CR>x`hh
 
 " ================================= Visual Wrappers ==================
 
