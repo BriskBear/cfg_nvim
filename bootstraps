@@ -20,7 +20,7 @@ get_plugs() {
 
   for p in ${plugs[@]}
   do
-    git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p"
+    git clone "https://github.com/$p" "$HOME/.config/nvim/plugs/$p" --depth 1
   done
 }
 
