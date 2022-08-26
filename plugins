@@ -4,5 +4,5 @@ kien/ctrlp.vim
 neovim/nvim-lspconfig
 nvim-treesitter/nvim-treesitter
 tpope/vim-endwise
-wfxr/minimap.vim"
+wfxr/minimap.vim
 williamboman/nvim-lsp-installer
