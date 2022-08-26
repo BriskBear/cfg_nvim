@@ -1,14 +1,14 @@
 #!/bin/bash
 
 SCRIPT=`realpath $0`
-SOURCE="`realpath $(pwd)`/*"
+SOURCE="`realpath $(pwd)`"
 DEST="$HOME/.config/nvim"
 url='https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage'
 
 copy_config() {
   [[ -d ~/.config/nvim ]]&& \
     ( echo 'neovim config exists!' && exit ) \
-    || ( mkdir -pv ~/.config/nvim ; cp -rvf $SOURCE $DEST )
+    || ( mkdir -pv ~/.config/nvim ; cp -rvf $SOURCE/* $DEST )
 }
 
 get_plugs() {
