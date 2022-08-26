@@ -49,10 +49,10 @@ install_neovim() {
 
 case $1 in 
   -c|--config)
-    printf "copy_config\n"
+    copy_config
   ;;
   -p|--plugins)
-    printf "get_plugs"
+    get_plugs
   ;;
   -h|--help)
     printf "bootstraps:\n  -c copy configuration only\n  -p config and plugins\n  default: install neovim, copy config, plugins, and install code-minimap\n"
