@@ -51,8 +51,8 @@ install_neovim() {
 [[ $# == 0 ]] && \
   ( copy_config && \
     get_plugs && \
-    install_minimap && \
-    install_neovim )
+    install_neovim && \
+    install_minimap )
 
 case $1 in 
   -c|--config)
