@@ -1,7 +1,7 @@
 " =================== General Configuration ===========================
 
   set autoread               " reload changes from outside of vim
-  set colorcolumn=93,100       " Line Ending Indicator
+  set colorcolumn=93,100     " Line Ending Indicator
   set number relativenumber  " #s 'relative' to cursor
   set history=10000          " much cmdline history
   set ignorecase             " ignore case
@@ -46,7 +46,7 @@
 
 " =================== Persistent Undo ==================================
 
-  silent !mkdir ~/.config/nvim/.backups
+  silent !mkdir ~/.config/nvim/.backups > /dev/null 2>$1
   set undodir=~/.config/nvim/.backups
   set undofile
 
@@ -83,7 +83,7 @@
 
 " =================== Plugins Load =====================================
 
-  exe "source " expand(prefix) . "Plugins.vim"
+  set runtimepath+=$HOME/.config/nvim/** " untested
 
 " =================== Colors ==========================================
 
