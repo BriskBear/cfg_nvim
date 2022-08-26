@@ -24,6 +24,12 @@ get_plugs() {
   done
 }
 
+install_minimap() {
+  arch=$(lscpu|awk -F '{print $2}')
+
+  [[ $arch ]] && sudo cp .minimap/$arch /usr/sbin/
+}
+
 install_neovim() {
   pushd /tmp/
   ( curl -L $url -o nvim.appimage && \
@@ -35,6 +41,26 @@ install_neovim() {
   popd
 }
 
-copy_config
-get_plugs
-printf "call \033[0;36minstall_neovim\033[0m to build nightly\n"
+# copy_config
+# get_plugs
+# printf "call \033[0;36minstall_neovim\033[0m to build nightly\n"
+
+
+[[ $# == 0 ]] && \
+  ( copy_config && \
+    get_plugs && \
+    install_minimap && \
+    install_neovim )
+
+
+case $1 in 
+  -c|--config)
+    printf "copy_config\n"
+  ;;
+  -p|--plugins)
+    printf "get_plugs"
+  ;;
+  -h|--help)
+    printf "bootstraps:\n  -c copy configuration only\n  -p config and plugins\n  default: install neovim, copy config, plugins, and install code-minimap\n"
+  ;;
+esac
