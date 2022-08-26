@@ -1,30 +1,7 @@
 
 " ================================= Braces & Brackets =================
 
-  inoremap {<cr> {<cr>}<c-o><s-o>  
-  inoremap [<cr> [<cr>]<c-o><s-o>  
-  inoremap (<cr> (<cr>)<c-o><s-o>  
-  inoremap ((<space> (  )<c-o>h
-  inoremap [[<space> [  ]<c-o>h
-  inoremap {{<space> {  }<c-o>h
-  inoremap <<<space> <  ><c-o>h
-  inoremap "" ""<c-o>i
-  inoremap '' ''<c-o>i
-  inoremap `` ``<c-o>i
-  inoremap ('( ('')<c-o>i
-  inoremap (( ()<c-o>i
-  inoremap [[ []<c-o>i
-  inoremap {{ {}<c-o>i
-  inoremap << <><c-o>i
-  inoremap <%= <%=<space><space>%><c-o>2h
-  inoremap <%<space> <%<space><space>%><c-o>2h
-  inoremap \"\" \"\"<c-o>h
-  inoremap (s (<c-o>A)
-  inoremap {s {<c-o>A}
-  inoremap [s [<c-o>A]
-  inoremap "s "<c-o>A"
-  inoremap 's '<c-o>A'
-  inoremap `s `<c-o>A`
+  exe "source " expand(prefix) . "Brackets.vim"
 
 " ================================= Comments ==========================
 
@@ -66,22 +43,29 @@
   nnoremap <Tab> mpvip<c-v>I  <esc>`p
   vnoremap <Tab> <c-v>I<Tab><esc>
 
+" ================================ Shebang ============================
+
+  nnoremap 3r mhggI#!/usr/bin/env ruby<esc>`h
+  nnoremap 3b mhggI#!/bin/bash<esc>`h:w<CR>:e<CR>o<CR>
 
 " ================================ Utility ============================
 
   nnoremap ~ :r! 
-  inoremap kj <esc>
-  inoremap KJ <esc>
-  vnoremap KJ <esc>
+  nnoremap X :bd1<cr>
+  inoremap kj <esc>l
+  inoremap KJ <esc>l
+  vnoremap kj <esc>l
+  vnoremap KJ <esc>l
   nnoremap <c-s> :w<CR>
   nnoremap <c-x> :q<CR>
   nnoremap <Leader>r :source $MYVIMRC<CR>
   nnoremap <Leader>R :set nu relativenumber!<CR>
-  nnoremap <Leader> :q!<CR>
+  nnoremap <Leader>q :qa!<CR>
   nnoremap <Leader>% :! ./%<CR>
   nnoremap <Leader>t :tabnew 
+  nnoremap <Leader>N :new 
   nnoremap <A-t> :tabfind 
-  nnoremap <Leader>col :tabfind ~/.config/nvim/Color.vim<CR>
+  nnoremap <Leader>col :exe "tabfind " expand(color_file)<CR>
   nnoremap <Leader>key :tabfind ~/.config/nvim/Keymap.vim<CR>
   nnoremap <Leader>init :tabfind ~/.config/nvim/init.vim<CR>
   nnoremap <Leader>s :w 

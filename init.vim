@@ -1,7 +1,7 @@
 " =================== General Configuration ===========================
 
   set autoread               " reload changes from outside of vim
-  set colorcolumn=90         " Line Ending Indicator
+  set colorcolumn=93,100       " Line Ending Indicator
   set number relativenumber  " #s 'relative' to cursor
   set history=10000          " much cmdline history
   set ignorecase             " ignore case
@@ -18,21 +18,25 @@
   set omnifunc=htmlcomplete#CompleteTags
   autocmd FileType ruby setl omnifunc=syntaxcomplete#Complete
 
+  let prefix    = "~/.config/nvim/"
   let $BASH_ENV = "~/.io/config/.aliases"
 
   " Update Leader Key to Space
   let mapleader=" "
-  set timeout timeoutlen=1500
+  set timeout timeoutlen=500
 
   " Syntax Highlighting
   syntax on
 
   " Auto-Numbers
   augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * if expand('%:t') == '-MINIMAP-'|echo 'nonum'|set norelativenumber|vertical resize 19|else|set norelativenumber|set number| endif
+  autocmd BufLeave,FocusLost,InsertEnter * if @% == '-MINIMAP-'|echo 'nonum'| set norelativenumber|else|set relativenumber|endif
   augroup END
+  autocmd BufEnter,BufWrite * Minimap
+  
+  autocmd BufWritePre * lua vim.lsp.buf.formatting()
 
 " =================== Swap Files Off ==================================
 
@@ -42,11 +46,9 @@
 
 " =================== Persistent Undo ==================================
 
-  if has('persistent_undo') && !isdirectory(expand('~').'/.vim/backups')
-    silent !mkdir ~/.vim/backups > /dev/null 2>$1
-    set undodir=~/.vim/backups
-    set undofile
-  endif
+  silent !mkdir ~/.config/nvim/.backups
+  set undodir=~/.config/nvim/.backups
+  set undofile
 
 " =================== Folds ============================================
 
@@ -89,20 +91,16 @@
 
 " =================== Plugins Load =====================================
 
-  set runtimepath+=~/.config/nvim/plugs/kien/ctrlp.vim
-  set runtimepath+=~/.config/nvim/plugs/tpope/vim-endwise
-  set runtimepath+=~/.config/nvim/plugs/ervandew/vim-supertab
-  set runtimepath+=~/.config/nvim/plugs/junegunn/vim-easy-align
+  exe "source " expand(prefix) . "Plugins.vim"
 
 " =================== Colors ==========================================
 
-  source ~/.config/nvim/Color.vim
+  let color_file = expand(prefix) . "color/Emerald.vim"
+  exe "source "    expand(color_file)
 
 " =================== Status Line =====================================
 
   set statusline=
-  set statusline+=%#LineNr#
-  " set statusline+=%=
   set statusline+=\ \ \ \ \ \ 
   set statusline+=\ %f
   set statusline+=\ \ \ \ \ \ 
@@ -112,3 +110,7 @@
   set statusline+=\ \ \ \ \ \ 
   set statusline+=%{&fileencoding?&fileenconding:&encoding}
   set statusline+=\:%{&fileformat}
+
+" ================================= Language Servers ==================
+
+  luafile ~/.config/nvim/lua/language_servers
