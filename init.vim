@@ -5,14 +5,14 @@
   set number relativenumber  " #s 'relative' to cursor
   set history=10000          " much cmdline history
   set ignorecase             " ignore case
-  set lcs+=trail:❚,space:❚   " Use column to indicate spaces when enabled
+  set lcs+=trail:█,space:█   "  Use column to indicate spaces when enabled
   set mouse=a                " Mouse Enabled
   set showcmd                " show commands, even if incomplete?
   set showmode               " default, display mode at bottom line
   set smartcase              " Unless includes capital
   set cursorline             " Locate the cursor vertically
-  set path+=~/.io/.blanks    " Edit Blanks Easily
-  set path+=~/.config/*      " Edit Configurations Easily
+  set path+=~/.io/.blanks/** " Edit Blanks Easily
+  set path+=~/.config/**     " Edit Configurations Easily
   set path+=**               " search recursive for files
 
   set omnifunc=htmlcomplete#CompleteTags
@@ -30,9 +30,9 @@
 
   " Auto-Numbers
   augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * if expand('%:t') == '-MINIMAP-'|echo 'nonum'|set norelativenumber|vertical resize 19|else|set norelativenumber|set number| endif
-  autocmd BufLeave,FocusLost,InsertEnter * if @% == '-MINIMAP-'|echo 'nonum'| set norelativenumber|else|set relativenumber|endif
+    autocmd!
+    autocmd BufEnter,FocusGained,InsertLeave * if expand('%:t') == '-MINIMAP-'|echo 'nonum'|set norelativenumber|vertical resize 19|else|set norelativenumber|set number| endif
+    autocmd BufLeave,FocusLost,InsertEnter * if @% == '-MINIMAP-'|echo 'nonum'| set norelativenumber|else|set relativenumber|endif
   augroup END
   autocmd BufEnter,BufWrite * Minimap
   
@@ -58,7 +58,7 @@
 
 " =================== Keys =============================================
 
-  source ~/.config/nvim/Keymap.vim 
+  exe "source " expand(prefix) . "Keymap.vim"
 
 " =================== Indentation ======================================
 
@@ -80,14 +80,6 @@
 
   nnoremap <silent> <Leader>[ :exe "resize" . (winheight(0) * 3/2)<CR>
   nnoremap <silent> <Leader>] :exe "resize" . (winheight(0) * 2/3)<CR>
-
-" =================== Seeing Is Beliving ==============================
-
-  nmap <Leader>b :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk<CR>;
-  nmap <Leader>n :%.!seeing_is_believing --timeout 12 --line-length 500 --number-of-captures 300 --alignment-strategy chunk --xmpfilter-style<CR>;
-  nmap <Leader>c  :%.!seeing_is_believing --clean<CR>
-  nmap mA # => <esc>
-  vmap <leader>m :norm A # => <esc>
 
 " =================== Plugins Load =====================================
 
@@ -113,4 +105,4 @@
 
 " ================================= Language Servers ==================
 
-  luafile ~/.config/nvim/lua/language_servers
+  exe "luafile " expand(prefix) . "lua/language_servers"
