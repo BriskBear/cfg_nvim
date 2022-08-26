@@ -1,2 +1,2 @@
-paths["vim"]=/home/deftclaw/.config/nvim/plugs/wfxr/minimap.vim/autoload/minimap/
-paths["minimap"]=/home/deftclaw/.config/nvim/plugs/wfxr/minimap.vim/plugin/
+paths["vim"]=$HOME/.config/nvim/plugs/wfxr/minimap.vim/autoload/minimap/
+paths["minimap"]=$HOME/.config/nvim/plugs/wfxr/minimap.vim/plugin/
