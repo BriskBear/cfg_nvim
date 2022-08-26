@@ -26,6 +26,13 @@ get_plugs() {
 
 install_minimap() {
   arch=$(lscpu|grep -i architecture|awk '{print $2}')
+  declare -A paths
+  . $SOURCE/.minimap/paths
+
+  for p in "${!paths[@]}"
+  do 
+    cp -fv $SOURCE/.minimap/$p.vim "${paths[$p]}"
+  done
 
   [[ $arch ]] && sudo cp .minimap/$arch /usr/sbin/code-minimap
 }
