@@ -16,7 +16,7 @@ get_plugs() {
 
   [[ -d ~/.config/nvim/ ]]&& \
     ( echo "~/.config/nvim/ exists!" && exit ) \
-    || ( mkdir -vp ~/.config/nvim/{lua,plugs} )
+    || ( mkdir -vp ~/.config/nvim/plugs )
 
   for p in ${plugs[@]}
   do
