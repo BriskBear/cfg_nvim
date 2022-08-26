@@ -25,7 +25,7 @@ get_plugs() {
 }
 
 install_minimap() {
-  arch=$(lscpu|awk -F '{print $2}')
+  arch=$(lscpu|grep -i architecture|awk '{print $2}')
 
   [[ $arch ]] && sudo cp .minimap/$arch /usr/sbin/
 }
