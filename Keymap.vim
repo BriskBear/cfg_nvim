@@ -74,12 +74,14 @@
   nnoremap <A-r> :resize 
   nnoremap <A-t> :tabfind 
   nnoremap <A-f> :sfind 
+  nnoremap <c-f> :set filetype=
   nnoremap <Leader>col :exe "tabfind " expand(color_file)<CR>
   nnoremap <Leader>key :tabfind ~/.config/nvim/Keymap.vim<CR>
   nnoremap <Leader>init :tabfind ~/.config/nvim/init.vim<CR>
   nnoremap <Leader>yml ggO--- #<esc>:r!date -u +\%s<CR>kJGo...<esc>kA
   nnoremap <Leader>s :w 
   nnoremap <Leader>S :w 
+  nnoremap D :r!date -u +\%s<CR>Jx
 
 " ================================= Whitespace Toggle =================
 

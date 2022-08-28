@@ -12,6 +12,7 @@
   set smartcase              " Unless includes capital
   set cursorline             " Locate the cursor vertically
   set path+=~/.io/.blanks/** " Edit Blanks Easily
+  set path+=~/.local/bin/**    " Edit localbin Easily
   set path+=~/.config/**     " Edit Configurations Easily
   set path+=**               " search recursive for files
 

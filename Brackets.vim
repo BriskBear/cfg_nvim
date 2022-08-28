@@ -13,19 +13,19 @@
   inoremap ('( ('')<c-o>F'
   inoremap ("( ("")<c-o>F"
   inoremap (( ()<esc>F(a
-  inoremap [[<space> [[  ]]<c-o>F 
   inoremap [[ []<esc>F[a
   inoremap {{ {}<esc>F{a
   inoremap << <><esc>F<a
   inoremap <%= <%=<space><space>%><c-o>F 
   inoremap <%<space> <%<space><space>%><c-o>F 
   inoremap \" \"\"<esc>F"a
-  inoremap (s (<c-o>A)
-  inoremap {s {<c-o>A}
-  inoremap [s [<c-o>A]
-  inoremap "s "<c-o>A"
-  inoremap 's '<c-o>A'
-  inoremap `s `<c-o>A`
+  inoremap "s <esc>lmh`>a"<c-o>`h"
+  inoremap 's <esc>lmh`>a'<c-o>`h'
+  inoremap `s <esc>lmh`>a`<c-o>`h`
+  inoremap {s <esc>lmh`>a}<c-o>`h{
+  inoremap (s <esc>lmh`>a)<c-o>`h(
+  inoremap [s <esc>lmh`>a]<c-o>`h[
+  inoremap <s <esc>lmh`>a><c-o>`h<
   nnoremap <Leader>" mh/"<CR>x?"<CR>x`hh
   nnoremap <Leader>' mh/'<CR>x?'<CR>x`hh
   nnoremap <Leader>` mh/`<CR>x?`<CR>x`hh
