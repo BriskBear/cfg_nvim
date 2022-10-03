@@ -1,8 +1,8 @@
 " ================================= Insert Shortcuts ==================
 
-  inoremap {<cr> {<cr>}<c-o><s-o>  
-  inoremap [<cr> [<cr>]<c-o><s-o>  
-  inoremap (<cr> (<cr>)<c-o><s-o>  
+  inoremap {<cr> {<cr>}<c-o><s-o>
+  inoremap [<cr> [<cr>]<c-o><s-o>
+  inoremap (<cr> (<cr>)<c-o><s-o>
   inoremap ((<space> (  )<c-o>F 
   inoremap [[<space> [[  ]]<c-o>F 
   inoremap {{<space> {  }<c-o>F 

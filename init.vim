@@ -84,7 +84,7 @@
 
 " =================== Plugins Load =====================================
 
-  set runtimepath+=$HOME/.config/nvim/** " untested
+  exe "source " expand(prefix) . "Plugins.vim"
 
 " =================== Colors ==========================================
 

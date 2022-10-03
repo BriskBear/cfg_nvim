@@ -76,8 +76,8 @@
   nnoremap <A-f> :sfind 
   nnoremap <c-f> :set filetype=
   nnoremap <Leader>col :exe "tabfind " expand(color_file)<CR>
-  nnoremap <Leader>key :tabfind ~/.config/nvim/Keymap.vim<CR>
-  nnoremap <Leader>init :tabfind ~/.config/nvim/init.vim<CR>
+  nnoremap <Leader>key :exe "tabfind " . "Keymap.vim"<CR>
+  nnoremap <Leader>init :exe "tabfind " . "init.vim"<CR>
   nnoremap <Leader>yml ggO--- #<esc>:r!date -u +\%s<CR>kJGo...<esc>kA
   nnoremap <Leader>s :w 
   nnoremap <Leader>S :w 
