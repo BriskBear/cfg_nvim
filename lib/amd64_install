@@ -3,7 +3,7 @@
 ibld() {
   chmod u+x nvim.appimage                   # allow execution
   ./nvim.appimage --appimage-extract        # extract the files
-  cp ./squashfs-root/usr/bin/nvim /usr/bin/ # copy the executable to the system shared binaries directory
+  cp -rf ./squashfs-root/usr /              # copy the executable to the system shared binaries directory
 }
 
 nimg() {
