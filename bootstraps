@@ -38,7 +38,7 @@ install_minimap() {
 }
 
 install_neovim() {
-  source main
+  sudo ./main
 }
 
 [[ $# == 0 ]] && \
