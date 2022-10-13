@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 deps() {
-  pacman -S base-devel cmake unzip ninja tree-sitter curl --noconfirm
+  pacman -S base-devel cmake unzip ninja tree-sitter curl --noconfirm --needed
 }
 
 nbld() {
