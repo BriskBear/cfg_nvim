@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+
+ibld() {
+  chmod u+x nvim.appimage                   # allow execution
+  ./nvim.appimage --appimage-extract        # extract the files
+  cp ./squashfs-root/usr/bin/nvim /usr/bin/ # copy the executable to the system shared binaries directory
+}
+
+nimg() {
+  branch=$(mktemp -d)
+  url='https://github.com/neovim/neovim/releases/download/stable/nvim.appimage'
+
+  curl -o $branch/nvim.appimage -L $url
+  pushd $branch
+  ibld
+}
+

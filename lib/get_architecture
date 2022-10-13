@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+qarch() {
+  [[ $(which lscpu) ]] \
+    && ( export ARCH=$(lscpu|grep Architecture:|awk '{print $2}') ; echo $ARCH) \
+    || ( echo -e "\033[1;31mlscpu not found\033[0m" )
+}

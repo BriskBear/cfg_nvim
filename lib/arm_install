@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+deps() {
+  pacman -S base-devel cmake unzip ninja tree-sitter curl --noconfirm
+}
+
+nbld() {
+  deps
+
+  make CMAKE_BUILD_TYPE=Release
+  vers=$(build/bin/nvim --version | grep ^Build)
+  echo "Built Neovim: $vers"
+
+  make install
+}
+
+ndwn() {
+  branch=$(mktemp -d)/neovim
+  url='https://github.com/neovim/neovim'
+  
+  git clone $url --branch stable --depth 1 $branch
+  pushd $branch
+
+  nbld
+}
+

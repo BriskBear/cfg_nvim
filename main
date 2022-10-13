@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+source lib/get_architecture # Init qarch
+source lib/arm_install      # Init build functions (call ndwn)
+source lib/amd64_install    # Init appimage functions ( call nimg )
+
+okay() {
+  case $(qarch) in
+    aarch64)
+      ndwn
+    ;;
+    x86_64)
+      nimg
+    ;;
+    *)
+      "Architecture $ARCH, not yet supported"
+    ;;
+  esac
+}
+
+[[ $(whoami) == root ]] && ( okay ) || ( sudo okay )
+
