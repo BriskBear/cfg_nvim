@@ -12,7 +12,6 @@
    vnoremap <a-/> :s/\/\/ //<CR>
    vnoremap ' <c-v>mh0I' <esc>`h
    vnoremap <a-'> :s/\' //<CR>
-   vnoremap " <c-v>mh0I" <esc>`h
    vnoremap <a-"> :s/\" //<CR>
 
 " ================================= Completion ========================
